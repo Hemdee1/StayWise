@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="w-fullScreen mt-40 max-w-full mx-auto text-xs md:text-base space-y-11 md:space-y-[100px] pt-11 md:pt-[100px] padding bg-[#FFEBAD]">
+    <footer className="w-fullScreen mt-40 max-w-full mx-auto text-xs md:text-base space-y-11 md:space-y-[100px] pt-11 md:pt-[100px] padding bg-black text-white">
       <div className="flex flex-wrap justify-between gap-x-10 gap-y-10 md:gap-y-16 px-3 xl:px-[50px] 2xl:px-[100px] w-fullscreen mx-auto max-w-full">
         <div className="flex flex-col items-start gap-3">
           <h5 className="font-semibold">Countries</h5>

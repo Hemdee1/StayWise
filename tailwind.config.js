@@ -16,7 +16,8 @@ module.exports = {
       },
       colors: {
         primary: "#FEB737",
-        secondary: "#FFEBD9",
+        secondary: "#543786",
+        borderColor: "#E5E5E5",
       },
       backgroundImage: {
         hero: "url('/images/bg.png')",

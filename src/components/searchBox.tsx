@@ -7,7 +7,7 @@ const SearchBox = () => {
         <LocationIcon />
         <input
           type="text"
-          className="py-4 w-[200px] 2xl:w-[280px] text-lg px-3 border border-black rounded-xl"
+          className="py-4 w-[200px] 2xl:w-[280px] text-lg px-3 border border-borderColor rounded-[10px]"
           placeholder="Where are you going?"
         />
       </div>
@@ -16,7 +16,7 @@ const SearchBox = () => {
         <CalendarIcon />
         <input
           type="text"
-          className="py-4 w-[200px] 2xl:w-[280px] text-lg px-3 border border-black rounded-xl"
+          className="py-4 w-[200px] 2xl:w-[280px] text-lg px-3 border border-borderColor rounded-[10px]"
           placeholder="Check-in Date - Check-out Date"
         />
       </div>
@@ -26,7 +26,7 @@ const SearchBox = () => {
         <select
           name="category"
           id="category"
-          className="py-4 w-[200px] 2xl:w-[280px] text-lg px-3 border border-black rounded-xl"
+          className="py-4 w-[200px] 2xl:w-[280px] text-lg px-3 border border-borderColor rounded-[10px]"
         >
           <option value="">2 adults- 0 children - 1 room</option>
           <option value="">2 adults- 0 children - 1 room</option>
@@ -34,8 +34,9 @@ const SearchBox = () => {
         </select>
       </div>
 
-      <button className="p-8 rounded-[30px] bg-primary">
+      <button className="p-3 flex font-bold items-center gap-1 rounded-[10px] bg-primary">
         <SearchIcon />
+        Search
       </button>
     </section>
   );
