@@ -5,7 +5,7 @@ const LoginOrUser = () => {
   return (
     <>
       {login ? (
-        <span></span>
+        <div className="flex items-center"></div>
       ) : (
         <>
           <Link
