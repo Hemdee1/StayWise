@@ -1,50 +1,39 @@
+import ApartmentBox from "@/components/apartmentBox";
 import { LeftIcon, RightIcon } from "@/components/icons";
 import Layout from "@/components/layout";
 import SearchBox from "@/components/searchBox";
+import { useMyStore } from "@/store/store";
+import { ApartmentType } from "@/types";
+import { explore, offerData } from "@/utils";
 import Image from "next/image";
-
-const offerData = [
-  {
-    image: "/images/offers1.png",
-    title: "Work, relax, or do a bit of both",
-    desc: "Browse properties offering extended stays, many with reduced monthly rates",
-  },
-  {
-    image: "/images/offers2.png",
-    title: "Work, relax, or do a bit of both",
-    desc: "Browse properties offering extended stays, many with reduced monthly rates",
-  },
-  {
-    image: "/images/offers3.png",
-    title: "Work, relax, or do a bit of both",
-    desc: "Browse properties offering extended stays, many with reduced monthly rates",
-  },
-];
-
-const explore = [
-  {
-    city: "Lekki",
-    img: "https://img.freepik.com/free-photo/bangkok-thailand-august-12-2016-beautiful-luxury-living-room_1203-2867.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
-  },
-  {
-    city: "Asokoro",
-    img: "https://img.freepik.com/premium-photo/red-orange-living-room_244125-969.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
-  },
-  {
-    city: "Maitama",
-    img: "https://img.freepik.com/premium-photo/frame-3d-interior-illustration-wall-design-modern-empty-space-creative-3d_262243-2123.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
-  },
-  {
-    city: "Wuse",
-    img: "https://img.freepik.com/free-photo/interior-design-with-photoframes-plants_23-2149385437.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
-  },
-  {
-    city: "Jabi",
-    img: "https://img.freepik.com/free-photo/3d-render-blank-picture-leaning-against-wall-room-interior_1048-6282.jpg?size=626&ext=jpg&ga=GA1.2.1845495995.1695116234&semt=ais",
-  },
-];
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const { appartments } = useMyStore();
+
+  const [lovedByGuest, setLovedByGuest] = useState<ApartmentType[]>([]);
+  const [loveRomance, setLoveRomance] = useState<ApartmentType[]>([]);
+
+  // GENERATING RANDOM MOCK DATA FOR SECTIONS
+  useEffect(() => {
+    if (appartments.length === 0) return;
+
+    setLovedByGuest([
+      appartments[0],
+      appartments[2],
+      appartments[4],
+      appartments[6],
+      appartments[10],
+    ]);
+    setLoveRomance([
+      appartments[1],
+      appartments[3],
+      appartments[5],
+      appartments[13],
+      appartments[11],
+    ]);
+  }, [appartments]);
+
   return (
     <Layout>
       <main className="">
@@ -247,49 +236,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-wrap mt-8 gap-x-7 gap-y-10">
-              {explore.map((data, index) => {
-                const { city, img } = data;
-
-                return (
-                  <article
-                    key={index}
-                    className="relative flex-1 min-w-[300px] shadow-lg rounded-2xl overflow-clip font-Grotesk"
-                  >
-                    <div className="w-full h-[240px]">
-                      <Image
-                        src={img}
-                        alt="offer image"
-                        height={0}
-                        width={0}
-                        sizes="100vw"
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <div className="relative px-4 py-2 text-black">
-                      <h3 className="text-xl font-medium">
-                        Aparthotel Stare Miasto
-                      </h3>
-                      <h4 className="text-[#6C6C6C]">
-                        Aparthotel Stare Miasto
-                      </h4>
-
-                      <div className="flex flex-wrap  mt-5 gap-2 text-[#6C6C6C] text-sm">
-                        <span className="grid w-6 h-6 rounded-md place-content-center bg-primary">
-                          6.7
-                        </span>
-                        <p className="">Excellent</p>
-                        <p className="">2,445 reviews</p>
-                      </div>
-                      <p className="mt-2 text-right">
-                        Starting from{" "}
-                        <span className="font-bold">NGN 56,233</span>
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+            <ApartmentBox data={lovedByGuest} />
           </div>
 
           {/* LOVED & ROMANCE SECTION */}
@@ -303,49 +250,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-wrap mt-8 gap-x-7 gap-y-10">
-              {explore.map((data, index) => {
-                const { city, img } = data;
-
-                return (
-                  <article
-                    key={index}
-                    className="relative flex-1 min-w-[300px] shadow-lg rounded-2xl overflow-clip font-Grotesk"
-                  >
-                    <div className="w-full h-[240px]">
-                      <Image
-                        src={img}
-                        alt="offer image"
-                        height={0}
-                        width={0}
-                        sizes="100vw"
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <div className="relative px-4 py-2 text-black">
-                      <h3 className="text-xl font-medium">
-                        Aparthotel Stare Miasto
-                      </h3>
-                      <h4 className="text-[#6C6C6C]">
-                        Aparthotel Stare Miasto
-                      </h4>
-
-                      <div className="flex flex-wrap  mt-5 gap-2 text-[#6C6C6C] text-sm">
-                        <span className="grid w-6 h-6 rounded-md place-content-center bg-primary">
-                          6.7
-                        </span>
-                        <p className="">Excellent</p>
-                        <p className="">2,445 reviews</p>
-                      </div>
-                      <p className="mt-2 text-right">
-                        Starting from{" "}
-                        <span className="font-bold">NGN 56,233</span>
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+            <ApartmentBox data={loveRomance} />
           </div>
         </div>
       </main>

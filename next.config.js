@@ -7,7 +7,21 @@ const nextConfig = {
         protocol: "https",
         hostname: "img.freepik.com",
         port: "",
-        // pathname: '/account123/**',
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "media.istockphoto.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "example.com",
+        port: "",
       },
     ],
   },
