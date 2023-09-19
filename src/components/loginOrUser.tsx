@@ -1,4 +1,5 @@
 import useOutsideClick from "@/hooks/useClickOutside";
+import { useMyStore } from "@/store/store";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -52,13 +53,13 @@ const userLinks = [
 
 const LoginOrUser = () => {
   const [openNav, setOpenNav] = useState(false);
+  const { user } = useMyStore();
 
   const ref = useOutsideClick(() => setOpenNav(false));
 
-  const login = true;
   return (
     <>
-      {login ? (
+      {user ? (
         <div
           ref={ref}
           className="relative flex items-center gap-2 cursor-pointer"

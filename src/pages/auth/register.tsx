@@ -5,6 +5,9 @@ import { FormEvent, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
 import LoginHeader from "@/components/loginHeader";
+import axios from "axios";
+import axiosInstance from "@/API Request/axiosconfig";
+import { useMyStore } from "@/store/store";
 
 type formType = {
   firstName: string;
@@ -14,21 +17,35 @@ type formType = {
 };
 
 const Register = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const { updateEmail } = useMyStore();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<formType>();
 
   const onSubmit: SubmitHandler<formType> = async (data) => {
-    try {
-      const res = "";
+    setError("");
 
-      router.push("/waitlist/success");
+    try {
+      const res = await axiosInstance("/user/register", {
+        method: "POST",
+        data,
+      });
+
+      updateEmail(data.email);
+      router.push("/auth/email-verification");
     } catch (error) {
-      // if (axios.isAxiosError(error))
+      if (axios.isAxiosError(error)) {
+        const err = error.response?.data;
+        setError(err);
+        console.log(err);
+      }
     }
   };
 
@@ -51,7 +68,7 @@ const Register = () => {
             <input
               type="text"
               id="firstName"
-              {...register("firstName")}
+              {...register("firstName", { required: true })}
               className="w-full px-5 py-3 border border-gray-300 rounded-lg"
               required
               placeholder="Enter your first name"
@@ -67,7 +84,7 @@ const Register = () => {
             <input
               type="text"
               id="lastName"
-              {...register("lastName")}
+              {...register("lastName", { required: true })}
               className="w-full px-5 py-3 border border-gray-300 rounded-lg"
               required
               placeholder="Enter your last name"
@@ -83,7 +100,7 @@ const Register = () => {
             <input
               type="email"
               id="email"
-              {...register("email")}
+              {...register("email", { required: true })}
               className="w-full px-5 py-3 border border-gray-300 rounded-lg"
               required
               placeholder="Enter your email address"
@@ -100,7 +117,7 @@ const Register = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                {...register("password")}
+                {...register("password", { required: true })}
                 className="w-full px-5 py-3 border border-gray-300 rounded-lg"
                 required
                 placeholder="Enter your password"
@@ -119,8 +136,10 @@ const Register = () => {
             className="w-full py-3 font-semibold text-center rounded-lg bg-primary"
             disabled={isSubmitting}
           >
-            {!isSubmitting ? "Register now" : "Registering...."}
+            {!isSubmitting ? "Register now" : "Please wait...."}
           </button>
+
+          <p className="text-center text-red-500 -translate-y-5">{error}</p>
 
           <span className="text-center font-medium text-[#1F1C23] relative w-full block">
             or

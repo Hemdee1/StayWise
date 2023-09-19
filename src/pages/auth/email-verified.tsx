@@ -1,5 +1,5 @@
-import Link from "next/link";
 import LoginHeader from "@/components/loginHeader";
+import Link from "next/link";
 
 const Page = () => {
   return (
@@ -12,16 +12,15 @@ const Page = () => {
         </div>
         <div className="text-center">
           <h1 className="py-3 mb-5 text-2xl font-bold text-center">
-            Check your inbox
+            Congratulation
           </h1>
           <p className="mt-2 font-medium">
-            We&apos;ve just send a verification code to your email. Once it
-            arrives, it will be valid for 5 minutes.
+            Your email has been verified successfully.
           </p>
 
-          <Link href="/auth/verify-email">
+          <Link href="/auth/login">
             <button className="w-full py-3 mt-10 font-semibold text-center rounded-lg bg-primary">
-              Continue
+              Go to Login
             </button>
           </Link>
         </div>
