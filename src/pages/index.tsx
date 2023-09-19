@@ -28,11 +28,11 @@ const explore = [
   },
   {
     city: "Asokoro",
-    img: "https://img.freepik.com/free-photo/bangkok-thailand-august-12-2016-beautiful-luxury-living-room_1203-2867.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
+    img: "https://img.freepik.com/premium-photo/red-orange-living-room_244125-969.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
   },
   {
     city: "Maitama",
-    img: "https://img.freepik.com/free-photo/hotel-room-with-comfortable-couch_1203-1488.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
+    img: "https://img.freepik.com/premium-photo/frame-3d-interior-illustration-wall-design-modern-empty-space-creative-3d_262243-2123.jpg?size=626&ext=jpg&ga=GA1.1.1845495995.1695116234&semt=ais",
   },
   {
     city: "Wuse",
