@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { LeftIcon, RightIcon } from "@/components/icons";
 import SearchBox from "@/components/searchBox";
@@ -50,14 +51,17 @@ export default function Home() {
       <Header />
 
       {/*   HERO SECTION */}
-      <div className="w-fullscreen mx-auto max-w-full padding h-[610px]">
-        <div className="relative h-full rounded-[36px] overflow-clip mt-5">
+      <div className="max-w-full mx-auto w-fullscreen padding">
+        <div className="relative h-[610px] rounded-[36px] overflow-clip mt-5">
           <Image src="/images/hero.png" fill alt="hero image" />
-          <div className="relative text-white pl-[6%] pt-[110px]">
+          <div className="relative text-white pl-[6%] pt-[70px]">
             <h1 className="text-[96px] font-semibold">Find your next stay</h1>
             <h3 className="text-[30px]">
               Search deals on hotels, homes and much more...
             </h3>
+            <button className="!px-10 !py-5 mt-5 text-black text-2xl font-bold primary-btn">
+              Explore Popular Places
+            </button>
           </div>
         </div>
 
@@ -131,7 +135,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                   />
-                  <h2 className="p-8 text-[32px] font-medium relative text-white">
+                  <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                     Lagos
                   </h2>
                 </div>
@@ -142,7 +146,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                   />
-                  <h2 className="p-8 text-[32px] font-medium relative text-white">
+                  <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                     Abuja
                   </h2>
                 </div>
@@ -156,7 +160,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                   />
-                  <h2 className="p-8 text-[32px] font-medium relative text-white">
+                  <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                     Kano
                   </h2>
                 </div>
@@ -167,7 +171,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                   />
-                  <h2 className="p-8 text-[32px] font-medium relative text-white">
+                  <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                     Port Harcourt
                   </h2>
                 </div>
@@ -178,7 +182,7 @@ export default function Home() {
                     fill
                     className="object-cover"
                   />
-                  <h2 className="p-8 text-[32px] font-medium relative text-white">
+                  <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                     Jos
                   </h2>
                 </div>
@@ -233,7 +237,115 @@ export default function Home() {
             })}
           </div>
         </div>
+
+        {/* LOVED BY GUEST SECTION */}
+        <div className="pt-[100px] w-[80%] max-w-full mx-auto">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-[36px] font-semibold mb-1">
+                Homes Loved by guests
+              </h3>
+              <h4>Alot of our guests are loving these houses</h4>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap mt-8 gap-x-7 gap-y-10">
+            {explore.map((data, index) => {
+              const { city, img } = data;
+
+              return (
+                <article
+                  key={index}
+                  className="relative flex-1 min-w-[300px] shadow-lg rounded-2xl overflow-clip font-Grotesk"
+                >
+                  <div className="w-full h-[240px]">
+                    <Image
+                      src={img}
+                      alt="offer image"
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div className="relative px-4 py-2 text-black">
+                    <h3 className="text-xl font-medium">
+                      Aparthotel Stare Miasto
+                    </h3>
+                    <h4 className="text-[#6C6C6C]">Aparthotel Stare Miasto</h4>
+
+                    <div className="flex flex-wrap  mt-5 gap-2 text-[#6C6C6C] text-sm">
+                      <span className="grid w-6 h-6 rounded-md place-content-center bg-primary">
+                        6.7
+                      </span>
+                      <p className="">Excellent</p>
+                      <p className="">2,445 reviews</p>
+                    </div>
+                    <p className="mt-2 text-right">
+                      Starting from{" "}
+                      <span className="font-bold">NGN 56,233</span>
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* LOVED & ROMANCE SECTION */}
+        <div className="pt-[100px] w-[80%] max-w-full mx-auto">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-[36px] font-semibold mb-1">Love & Romance</h3>
+              <h4>These popular destination have a lot to offer</h4>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap mt-8 gap-x-7 gap-y-10">
+            {explore.map((data, index) => {
+              const { city, img } = data;
+
+              return (
+                <article
+                  key={index}
+                  className="relative flex-1 min-w-[300px] shadow-lg rounded-2xl overflow-clip font-Grotesk"
+                >
+                  <div className="w-full h-[240px]">
+                    <Image
+                      src={img}
+                      alt="offer image"
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div className="relative px-4 py-2 text-black">
+                    <h3 className="text-xl font-medium">
+                      Aparthotel Stare Miasto
+                    </h3>
+                    <h4 className="text-[#6C6C6C]">Aparthotel Stare Miasto</h4>
+
+                    <div className="flex flex-wrap  mt-5 gap-2 text-[#6C6C6C] text-sm">
+                      <span className="grid w-6 h-6 rounded-md place-content-center bg-primary">
+                        6.7
+                      </span>
+                      <p className="">Excellent</p>
+                      <p className="">2,445 reviews</p>
+                    </div>
+                    <p className="mt-2 text-right">
+                      Starting from{" "}
+                      <span className="font-bold">NGN 56,233</span>
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
       </div>
+
+      <Footer />
     </main>
   );
 }
