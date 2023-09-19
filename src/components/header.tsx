@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./logo";
 import { CarIcon, SleepIcon } from "./icons";
+import LoginOrUser from "./loginOrUser";
 
 const Header = () => {
   return (
@@ -26,18 +27,8 @@ const Header = () => {
           >
             List your property
           </Link>
-          <Link
-            href="/auth/login"
-            className="block transition-all duration-500 hover:opacity-70"
-          >
-            Log In
-          </Link>
-          <Link
-            href="/auth/register"
-            className="flex items-center gap-2 px-4 py-2 transition-all duration-500 border rounded-xl border-primary hover:bg-primary"
-          >
-            Sign Up
-          </Link>
+
+          <LoginOrUser />
         </div>
       </div>
     </header>
