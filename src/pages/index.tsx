@@ -29,7 +29,7 @@ export default function Home() {
       appartments[1],
       appartments[3],
       appartments[5],
-      appartments[13],
+      appartments[9],
       appartments[11],
     ]);
   }, [appartments]);

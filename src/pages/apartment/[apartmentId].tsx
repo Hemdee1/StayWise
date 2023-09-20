@@ -75,9 +75,11 @@ const Page = () => {
               </div>
             </div>
             <div className="flex items-center gap-3 text-sm text-secondary">
-              <button className="px-2 py-1 text-white rounded bg-primary">
-                Show on map
-              </button>
+              <Link href="/map">
+                <button className="px-2 py-1 text-white rounded bg-primary">
+                  Show on map
+                </button>
+              </Link>
               <span>
                 {address}, {city}, {country}
               </span>
@@ -180,9 +182,12 @@ const Page = () => {
               </p>
             </div>
           </div>
-          <button className="w-[300px] !py-3 rounded-lg border-2 border-secondary font-bold">
+          <Link
+            href={"/message/" + _id}
+            className="w-[300px] !py-3 rounded-lg border-2 text-center border-secondary font-bold"
+          >
             Message host
-          </button>
+          </Link>
         </div>
 
         {/* EXPLORE SECTION */}

@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ApartmentBox = ({ data }: { data: ApartmentType[] }) => {
-  console.log(data);
-
   return (
     <div className="flex flex-wrap mt-8 gap-x-7 gap-y-10">
       {data.map((info) => {
