@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "@/components/layout";
 
-export default function bookingSuccesful() {
+export default function BookingSuccesful() {
   return (
     <Layout>
       <div className="min-h-screen flex items-center justify-center flex-col gap-[70px] w-full bg-[#FEB737]">

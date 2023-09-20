@@ -1,7 +1,7 @@
 import Layout from "@/components/layout";
 import React from "react";
 
-export default function profile() {
+export default function Profile() {
   return (
     <Layout>
       <div className="w-full border-t border-gray-200 flex items-center justify-center min-h-screen">

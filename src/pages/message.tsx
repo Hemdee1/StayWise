@@ -1,7 +1,7 @@
 import Layout from "@/components/layout";
 import React from "react";
 
-export default function message() {
+export default function Message() {
   return (
     <Layout>
       <div className=" w-full min-h-screen flex">
