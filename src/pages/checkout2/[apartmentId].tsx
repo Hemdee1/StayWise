@@ -234,7 +234,7 @@ export default function CheckoutLayout() {
                       </div>
                       <div className="mt-[35px]">
                         <span className="block text-[36px] font-bold">
-                          {formatPrice(price + 8)}
+                          {formatPrice(price - 8)}
                         </span>
                         <span className="block text-[14px] font-medium">
                           Includes taxes and fees
