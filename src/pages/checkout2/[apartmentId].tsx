@@ -55,6 +55,7 @@ export default function CheckoutLayout() {
     metadata: {
       name: user?.firstName ?? "" + " " + user?.lastName ?? "",
       phone: user?.phoneNumber ?? "",
+      custom_fields: [],
     },
     publicKey: "pk_test_8ff4c6a48d79b8b6731f9724efa12ccd247c77e3",
     text: "Book Now",

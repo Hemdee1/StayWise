@@ -4,7 +4,7 @@ import { create } from "zustand";
 interface StoreState {
   user: UserType | null;
   appartments: ApartmentType[] | [];
-  updateUser: (user: UserType) => void;
+  updateUser: (user: UserType | null) => void;
   updateApartments: (appartments: ApartmentType[]) => void;
 
   // email verification
