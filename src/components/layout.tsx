@@ -6,7 +6,7 @@ import axiosInstance from "@/API Request/axiosconfig";
 import { ApartmentType } from "@/types";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { updateApartments, appartments } = useMyStore();
+  const { updateApartments, appartments, updateUser } = useMyStore();
 
   // console.log(appartments);
 
@@ -28,8 +28,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       }
     };
 
+    // AUTOLOGIN USER
+    const fetchUser = async () => {
+      try {
+        const res = await axiosInstance("/user");
+
+        const data = res.data;
+        updateUser(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchApartments();
-  }, [updateApartments]);
+    fetchUser();
+  }, [updateApartments, updateUser]);
 
   return (
     <>

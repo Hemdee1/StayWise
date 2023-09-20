@@ -42,7 +42,7 @@ const Login = () => {
         const err = error.response?.data;
 
         // if user has not verify email
-        if (err.email) {
+        if (err?.email) {
           updateEmail(data.email);
           return router.push("/auth/verify-email");
         }
