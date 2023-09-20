@@ -22,6 +22,8 @@ const Map = () => {
       city: "Abuja",
       lat: 9.0765,
       lng: 7.491302,
+      region: "",
+      timezone: "",
     },
     isp: "Google LLC",
   });
