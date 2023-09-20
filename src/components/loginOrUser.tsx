@@ -51,7 +51,7 @@ const LoginOrUser = () => {
       const res = axiosInstance.post("/user/logout");
 
       updateUser(null);
-      router.push("/");
+      router.push("/auth/login");
     } catch (error) {
       console.log(error);
     }
