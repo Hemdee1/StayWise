@@ -18,7 +18,9 @@ export default function Bookings() {
                   <p className="text-[#543786] text-[20px] font-bold">
                     Caesar’s Luxury Hotel
                   </p>
-                  <span className="block text-[#543786] text-[12px] font-normal mt-[2px]"></span>
+                  <span className="block text-[#543786] text-[12px] font-normal mt-[2px]">
+                    Lekki Phase 1, Lagos
+                  </span>
                   <span className="block text-[#319F43] text-[12px] mt-[2px] font-medium">
                     Confirmed
                   </span>
