@@ -29,13 +29,13 @@ export const offerData = [
   },
   {
     image: "/images/offers2.png",
-    title: "Work, relax, or do a bit of both",
-    desc: "Browse properties offering extended stays, many with reduced monthly rates",
+    title: "Explore, Experience, Enjoy",
+    desc: " Encapsulates the essence of travel - discovering new places",
   },
   {
     image: "/images/offers3.png",
-    title: "Work, relax, or do a bit of both",
-    desc: "Browse properties offering extended stays, many with reduced monthly rates",
+    title: "Adventures Await, Unveil, Absorb",
+    desc: "unveiling the possibilities, and absorbing the unique moments and experiences",
   },
 ];
 

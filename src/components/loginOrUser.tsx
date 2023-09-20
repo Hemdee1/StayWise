@@ -8,8 +8,7 @@ import { UserIcon } from "./icons";
 const userLinks = [
   {
     title: "Profile",
-    // link: "/profile",
-    link: "#",
+    link: "/profile",
   },
   {
     title: "Payment",
@@ -68,7 +67,7 @@ const LoginOrUser = () => {
           onClick={() => setOpenNav(true)}
         >
           {user.image ? (
-            <div className="relative grid border-2 w-14 h-14 place-content-center rounded-xl border-primary">
+            <div className="relative grid border-2 overflow-clip w-14 h-14 place-content-center rounded-xl border-primary">
               <Image
                 src={user.image}
                 alt="user image"

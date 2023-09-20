@@ -7,14 +7,11 @@ import { formatPrice } from "@/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { PaystackButton } from "react-paystack";
 
-export default function CheckoutLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function CheckoutLayout() {
   const router = useRouter();
-  const { appartments } = useMyStore();
+  const { appartments, user } = useMyStore();
 
   const [appartmentData, setAppartmentData] = useState<ApartmentType | null>(
     null
@@ -52,11 +49,20 @@ export default function CheckoutLayout({
   const { address, city, country } = location;
   const { adults, details, duration, rooms } = description;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    router.push("/booking-successful");
+  const componentProps = {
+    email: user?.email ?? "",
+    amount: price * 100,
+    metadata: {
+      name: user?.firstName ?? "" + " " + user?.lastName ?? "",
+      phone: user?.phoneNumber ?? "",
+    },
+    publicKey: "pk_test_8ff4c6a48d79b8b6731f9724efa12ccd247c77e3",
+    text: "Book Now",
+    onSuccess: () => router.push("/booking-successful"),
+    onClose: () => alert("Oops!! Something went wrong"),
   };
+
+  console.log(process.env.PAYSTACK_KEY);
 
   return (
     <Layout>
@@ -189,7 +195,12 @@ export default function CheckoutLayout({
                     </div>
                   </div>
                 </div>
-                <div className="min-h-[348px] w-full rounded-[8px] border-[1px] border-[#6C6C6C] mt-[11px]">
+              </div>
+
+              {/*  */}
+
+              <div className="w-[60%]">
+                <div className="min-h-[348px] w-full rounded-[8px] border-[1px] border-[#6C6C6C]">
                   <div className="mt-[32px] ">
                     <span className="block ml-[24px] text-[18px] font-bold">
                       Your price summary
@@ -231,133 +242,13 @@ export default function CheckoutLayout({
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/*  */}
-
-              <form className="w-[60%]" onSubmit={handleSubmit}>
-                <div className="w-full min-h-[297px] rounded-[8px] border-[1px] border-[#6C6C6C]">
-                  <p className="text-[24px] font-bold mt-[18px] ml-[26px]">
-                    Enter you Info
-                  </p>
-                  <form action="" className="w-full">
-                    <div className="flex ml-[26px] mt-[38px] gap-[5px] flex-col">
-                      <label htmlFor="" className="text-[16px] font-bold">
-                        Country/ Region *
-                      </label>
-                      <input
-                        className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[70%] h-[48px]"
-                        required
-                        type="text"
-                      />
-                    </div>
-                    <div className="flex ml-[26px] mt-[18px] gap-[5px] flex-col">
-                      <label htmlFor="" className="text-[16px] font-bold">
-                        Telephone (mobile number preferred) *
-                      </label>
-                      <input
-                        className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[70%] h-[48px]"
-                        required
-                        type="text"
-                      />
-                    </div>
-                  </form>
-                </div>
-                <div className="w-full, rounded-[8px] border-[1px] border-[#6C6C6C] min-h-[511px] mt-[10px] ">
-                  <p className="text-[24px] font-bold mt-[18px] ml-[26px]">
-                    How do you want to pay ?
-                  </p>
-
-                  <form action="" className="w-full">
-                    <div className="flex ml-[26px] mt-[30px] gap-[5px] flex-col">
-                      <label htmlFor="" className="text-[16px] font-bold">
-                        Country/ Region *
-                      </label>
-                      <input
-                        className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[70%] h-[48px]"
-                        required
-                        type="text"
-                      />
-                    </div>
-                    <div className="flex ml-[26px] mt-[30px] gap-[5px] flex-col">
-                      <label htmlFor="" className="text-[16px] font-bold">
-                        Card Type*
-                      </label>
-                      <input
-                        className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[70%] h-[48px]"
-                        required
-                        type="text"
-                      />
-                    </div>
-
-                    <div className="flex ml-[26px] mt-[30px] gap-[5px] flex-col">
-                      <label htmlFor="" className="text-[16px] font-bold">
-                        Card Number*
-                      </label>
-                      <input
-                        className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[70%] h-[48px]"
-                        required
-                        type="text"
-                      />
-                    </div>
-                    <div className="flex gap">
-                      <div className="flex ml-[26px] mt-[30px] gap-[5px] flex-col">
-                        <label htmlFor="" className="text-[16px] font-bold">
-                          Expiration date *
-                        </label>
-                        <input
-                          className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[50%] h-[48px]"
-                          type="text"
-                          required
-                        />
-                      </div>
-
-                      <div className="flex ml-[26px] mt-[30px] gap-[5px] flex-col">
-                        <label htmlFor="" className="text-[16px] font-bold">
-                          CVV code
-                        </label>
-                        <input
-                          className=" border-[1px] px-3 font-medium border-[#6C6C6C] rounded-[8px] w-[50%] h-[48px]"
-                          required
-                          type="text"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex gap-[17.32px] mt-[34px] mb-[32px] items-center  ml-[26px]">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="w-7 h-7"
-                      />
-                      <p className="text-[16px] font-normal">
-                        Save card for next booking
-                      </p>
-                    </div>
-                  </form>
-                </div>
-                <div className="flex gap-[17.32px] mt-[34px] items-center justify-center">
-                  <input type="checkbox" name="" id="" className="w-7 h-7" />
-                  <p className="text-[16px] font-normal">
-                    Agree with{" "}
-                    <span className="text-[#FEB737]">
-                      terms and condition of online payment
-                    </span>
-                    terms and condition of online payment and booking
-                  </p>
-                </div>
 
                 <div className="flex gap-[13px] ml-[10px] justify-end">
-                  {/* <div className="w-[264px] h-[68px] rounded-[12px] border border-[#FEB737] flex items-center justify-center mt-[45px] ">
-                    <p className="text-[25px] text-[#FEB737] font-normal">
-                      Check your booking
-                    </p>
-                  </div> */}
-                  <button className="w-[264px] h-[68px] rounded-[12px] bg-[#FEB737] flex items-center justify-center mt-[45px] ">
-                    <p className="text-[25px] font-normal">Complete booking</p>
+                  <button className="px-4 py-3 rounded-[12px] bg-[#FEB737] flex items-center justify-center mt-[45px] ml-[350px] text-xl font-semibold">
+                    <PaystackButton {...componentProps} />
                   </button>
                 </div>
-              </form>
+              </div>
               {/*  */}
             </div>
             <div className="w-full flex items-center mx-auto mt-[169.5px] rounded-[24px] min-h-[173px] border border-[#868686]">

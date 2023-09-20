@@ -6,6 +6,7 @@ import { useMyStore } from "@/store/store";
 import { ApartmentType } from "@/types";
 import { explore, offerData } from "@/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -46,9 +47,11 @@ export default function Home() {
               <h3 className="text-[30px]">
                 Search deals on hotels, homes and much more...
               </h3>
-              <button className="!px-10 !py-5 mt-5 text-black text-2xl font-bold primary-btn">
-                Explore Popular Places
-              </button>
+              <Link href="/explore">
+                <button className="!px-10 !py-5 mt-5 text-black text-2xl font-bold primary-btn">
+                  Explore Popular Places
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -86,8 +89,8 @@ export default function Home() {
                       fill
                       className="object-cover"
                     />
-                    <div className="relative p-10 text-white">
-                      <h3 className="text-3xl font-medium mb-4 w-[210px] max-w-full">
+                    <div className="relative p-5 text-white">
+                      <h3 className="max-w-full mb-4 text-3xl font-medium">
                         {title}
                       </h3>
                       <h5 className="w-[295px] max-w-full">{desc}</h5>
@@ -115,7 +118,13 @@ export default function Home() {
             <div className="flex w-full mt-8 gap-7">
               <div className="w-full space-y-5">
                 <div className="flex gap-5 h-[408px]">
-                  <div className="relative w-[40%] h-full rounded-xl overflow-clip">
+                  <Link
+                    href={{
+                      pathname: "explore",
+                      query: { location: "lagos" },
+                    }}
+                    className="relative w-[40%] h-full rounded-xl overflow-clip"
+                  >
                     <Image
                       src="/images/lagos.png"
                       alt="lagos house"
@@ -125,8 +134,14 @@ export default function Home() {
                     <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                       Lagos
                     </h2>
-                  </div>
-                  <div className="relative h-full rounded-xl overflow-clip w-[60%]">
+                  </Link>
+                  <Link
+                    href={{
+                      pathname: "explore",
+                      query: { location: "abuja" },
+                    }}
+                    className="relative h-full rounded-xl overflow-clip w-[60%]"
+                  >
                     <Image
                       src="/images/abuja.png"
                       alt="abuja house"
@@ -136,21 +151,27 @@ export default function Home() {
                     <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
                       Abuja
                     </h2>
-                  </div>
+                  </Link>
                 </div>
 
                 <div className="flex gap-5 h-[408px]">
-                  <div className="relative flex-1 h-full rounded-xl overflow-clip">
+                  <Link
+                    href={{
+                      pathname: "explore",
+                      query: { location: "osogbo" },
+                    }}
+                    className="relative flex-1 h-full rounded-xl overflow-clip"
+                  >
                     <Image
                       src="/images/kano.png"
-                      alt="kano house"
+                      alt="osogbo house"
                       fill
                       className="object-cover"
                     />
                     <h2 className="p-8 text-[25px] 2xl:text-[32px] font-medium relative text-white">
-                      Kano
+                      Osogbo
                     </h2>
-                  </div>
+                  </Link>
                   <div className="relative flex-1 h-full rounded-xl overflow-clip">
                     <Image
                       src="/images/port harcourt.png"

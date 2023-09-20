@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user } = useMyStore();
+
   const route = useRouter();
 
   useEffect(() => {

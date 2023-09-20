@@ -5,13 +5,13 @@ import Link from "next/link";
 
 const ApartmentBox = ({ data }: { data: ApartmentType[] }) => {
   return (
-    <div className="flex flex-wrap mt-8 gap-x-7 gap-y-10">
+    <div className="flex flex-wrap items-center justify-center mt-8 gap-x-7 gap-y-10">
       {data.map((info) => {
         return (
           <Link
             href={"/apartment/" + info?._id}
             key={info?._id}
-            className="relative flex-1 min-w-[300px] max-w-[600px] shadow-lg rounded-2xl overflow-clip font-Grotesk"
+            className="relative flex-1 min-w-[300px] max-w-[500px] shadow-lg rounded-2xl overflow-clip font-Grotesk"
           >
             <div className="w-full h-[240px]">
               <Image

@@ -231,7 +231,7 @@ export default function CheckoutLayout() {
                 <div className="w-full h-[102px] rounded-[8px] border-[1px] border-[#6C6C6C]">
                   <div className="flex ml-[36px] gap-[6px] items-center h-full">
                     {user?.image ? (
-                      <div className="relative grid border-2 w-14 h-14 place-content-center rounded-xl border-primary">
+                      <div className="relative grid border-2 w-14 h-14 place-content-center rounded-xl border-primary overflow-clip">
                         <Image
                           src={user.image}
                           alt="user image"
@@ -369,7 +369,7 @@ export default function CheckoutLayout() {
                 </div>
                 <Link
                   href={"/checkout2/" + _id}
-                  className="w-[264px] h-[68px] rounded-[12px] bg-[#FEB737] flex items-center justify-center mt-[45px] ml-[300px] text-[25px] font-semibold"
+                  className="px-4 py-3 rounded-[12px] bg-[#FEB737] flex items-center justify-center mt-[45px] ml-[350px] text-xl font-semibold"
                 >
                   Next : Final details
                 </Link>
