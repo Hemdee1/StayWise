@@ -5,8 +5,8 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:5000/:path*",
-        // destination: "https://staywise.onrender.com/:path*",
+        // destination: "http://localhost:5000/:path*",
+        destination: "https://staywise.onrender.com/:path*",
       },
     ];
   },
