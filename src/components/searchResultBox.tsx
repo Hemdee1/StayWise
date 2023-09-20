@@ -7,14 +7,16 @@ import { formatPrice } from "@/utils";
 const SearchResultBox = ({ data }: { data: ApartmentType }) => {
   return (
     <article className="flex gap-5 p-5 border rounded-[20px] border-borderColor">
-      <Image
-        src={data?.images[0]}
-        alt="search image"
-        height={0}
-        width={0}
-        sizes="100vw"
-        className="h-[200px] min-w-[230px] rounded-2xl object-cover"
-      />
+      <Link href={"/apartment/" + data._id}>
+        <Image
+          src={data?.images[0]}
+          alt="search image"
+          height={0}
+          width={0}
+          sizes="100vw"
+          className="h-[200px] min-w-[230px] rounded-2xl object-cover"
+        />
+      </Link>
       <div className="flex justify-between w-full">
         <div>
           <span className="flex items-center gap-2">
