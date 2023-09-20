@@ -42,7 +42,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
     fetchApartments();
     fetchUser();
-  }, [updateApartments, updateUser]);
+  }, [updateApartments]);
 
   return (
     <>

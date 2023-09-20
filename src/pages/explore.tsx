@@ -15,7 +15,7 @@ const Page = () => {
     []
   );
 
-  const title = router.query.location ?? "Area";
+  const title = router.query.location ?? "Your Area";
 
   useEffect(() => {
     const { location } = router.query;
@@ -38,7 +38,7 @@ const Page = () => {
       <main className="max-w-full mx-auto mt-10 w-fullscreen padding">
         <div className="w-full min-h-[230px] bg-[#543786] rounded-3xl text-center pt-11">
           <span className="text-4xl font-semibold text-white capitalize">
-            Popular places in your {title}
+            Popular places in {title}
           </span>
         </div>
         <SearchBox />

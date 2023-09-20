@@ -1,20 +1,32 @@
 import Layout from "@/components/layout";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import React from "react";
 
 export default function ListProperty() {
+  const Map = dynamic(
+    () => import("@/components/map"), // replace '@components/map' with your component's location
+    { ssr: false } // This line is important. It's what prevents server-side render
+  );
+
   return (
     <Layout>
-      <div className="w-full h-full justify-center flex -mb-[170px] border-t  border-gray-200 bg-[#543787]">
-        <div className="w-[80%] ">
-          <p className="text-[24px]  w-[25%] text-white font-medium  mt-[26px]">
+      <div className="w-full h-full justify-center flex border-t  border-gray-200 bg-[#543787]">
+        <div className="w-[90%] mt-10">
+          <p className="text-[24px] text-white font-medium  mt-[26px]">
             List your property among th 3000+ houses in Nigeria
           </p>
           <div className=" flex items-center mt-[30px] mb-[50px]  ">
-            <div className="w-[700px] h-[680px] bg-white rounded-[16px]">
-              {/* map here */}
+            <div className="w-[800px] h-[680px] bg-white rounded-[16px] overflow-clip relative">
+              <Image
+                src="/images/map.svg"
+                alt="map"
+                fill
+                className="object-cover"
+              />
             </div>
-            <div className="w-[651px]   ml-[104px] h-[605px] bg-white rounded-[16px]">
-              <div className="py-[30px] text-[36px] font-bold px-[60px]">
+            <div className="w-[651px]   ml-[104px] bg-white rounded-[16px]">
+              <div className="py-[30px] text-[36px] font-bold px-[20px]">
                 <p>Earn more with consistent bookings</p>
                 <div className="gap-[16px] mt-[36px] flex items-center">
                   <Mark />

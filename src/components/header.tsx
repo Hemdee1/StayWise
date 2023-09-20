@@ -22,7 +22,7 @@ const Header = () => {
 
         <div className="flex items-center gap-4">
           <Link
-            href="#"
+            href="/list-property"
             className="mr-10 transition-all duration-500 hover:opacity-70"
           >
             List your property

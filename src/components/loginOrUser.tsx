@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { UserIcon } from "./icons";
+import axiosInstance from "@/API Request/axiosconfig";
+import { useRouter } from "next/router";
 
 const userLinks = [
   {
@@ -11,52 +13,49 @@ const userLinks = [
     link: "/profile",
   },
   {
-    title: "Payment",
-    // link: "/payment",
-    link: "#",
-  },
-  {
     title: "Messages",
-    // link: "/messages",
-    link: "#",
+    link: "/message/id",
   },
   {
     title: "Saved Apartment",
-    // link: "/saved-apartment",
-    link: "#",
+    link: "/saved",
   },
   {
     title: "Bookings",
-    // link: "/bookings",
-    link: "#",
+    link: "/bookings",
   },
   {
     title: "Ratings & reviews",
-    // link: "/ratings",
-    link: "#",
+    link: "/rating-and-review",
   },
   {
     title: "Customer support",
-    // link: "/customer-support",
-    link: "#",
+    link: "/custommer-support",
   },
   {
     title: "Referrals",
-    // link: "/referrals",
-    link: "#",
-  },
-  {
-    title: "Language settings",
-    // link: "/language",
-    link: "#",
+    link: "/referals",
   },
 ];
 
 const LoginOrUser = () => {
+  const router = useRouter();
+
   const [openNav, setOpenNav] = useState(false);
-  const { user } = useMyStore();
+  const { user, updateUser } = useMyStore();
 
   const ref = useOutsideClick(() => setOpenNav(false));
+
+  const logout = async () => {
+    try {
+      const res = axiosInstance.post("/user/logout");
+
+      updateUser(null);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -95,7 +94,9 @@ const LoginOrUser = () => {
                 {link.title}
               </Link>
             ))}
-            <button className="text-[#E33629]">Logout</button>
+            <button className="text-[#E33629]" onClick={logout}>
+              Logout
+            </button>
           </div>
         </div>
       ) : (
