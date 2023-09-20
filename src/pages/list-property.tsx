@@ -46,8 +46,8 @@ export default function ListProperty() {
                     45% of partners get their first booking within a week
                   </p>
                 </div>
-                <div className="w-[100%] mt-[48px]  h-[56px] flex items-center rounded-[6px] justify-center bg-[#FEB737] ">
-                  <p className="text-[14px] font-normal">Copy link</p>
+                <div className="w-[100%] mt-[48px] h-[56px] flex items-center rounded-[6px] justify-center bg-[#FEB737] font-bold text-lg">
+                  <p className="text-[14px] font-normal">Get Started</p>
                 </div>
                 <div className="mt-[44px] flex items-center justify-center gap-[16px]">
                   <p className="text-[20px] font-medium">

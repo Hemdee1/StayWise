@@ -1,6 +1,12 @@
 import ApartmentBox from "@/components/apartmentBox";
 import ExploreMore from "@/components/exploreMore";
-import { LeftIcon, LoveIcon, RightIcon, StarIcon } from "@/components/icons";
+import {
+  LeftIcon,
+  LoveIcon,
+  RightIcon,
+  StarIcon,
+  LoveIconAlt,
+} from "@/components/icons";
 import Layout from "@/components/layout";
 import { useMyStore } from "@/store/store";
 import { ApartmentType } from "@/types";
@@ -89,7 +95,7 @@ const Page = () => {
           </div>
           <div className="flex items-center gap-7">
             <button onClick={() => setFilled((prev) => !prev)}>
-              <LoveIcon fill={filled} />
+              {filled ? <LoveIconAlt /> : <LoveIcon />}
             </button>
             <Link href={"/checkout/" + _id}>
               <button className="!px-10 !py-3 primary-btn">Reserve</button>
