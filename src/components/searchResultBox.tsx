@@ -1,41 +1,49 @@
 import Image from "next/image";
 import { StarIcon } from "./icons";
+import { ApartmentType } from "@/types";
+import Link from "next/link";
+import { formatPrice } from "@/utils";
 
-const SearchResultBox = () => {
+const SearchResultBox = ({ data }: { data: ApartmentType }) => {
   return (
     <article className="flex gap-5 p-5 border rounded-[20px] border-borderColor">
       <Image
-        src="/images/hero.png"
+        src={data?.images[0]}
         alt="search image"
         height={0}
         width={0}
         sizes="100vw"
-        className="h-[200px] w-[230px] rounded-2xl object-cover"
+        className="h-[200px] min-w-[230px] rounded-2xl object-cover"
       />
       <div className="flex justify-between w-full">
         <div>
           <span className="flex items-center gap-2">
-            <h3 className="text-xl font-bold text-secondary">
-              Caesar’s Luxury Hotel
-            </h3>
-            <div className="flex gap-0">
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
+            <h3 className="text-xl font-bold text-secondary">{data?.title}</h3>
+            <div className="flex gap-2">
+              {Array(Math.floor(data?.rating / 2))
+                .fill(null)
+                .map((_item, i) => (
+                  <StarIcon key={i} />
+                ))}
             </div>
           </span>
-          <span className="flex items-center gap-2 mt-2 text-xs font-semibold text-secondary">
-            <span>Lekki Phase 1, Lagos</span>
-            <button>Show on map</button>
-            <span>13.4 Km from center</span>
+          <span className="flex items-center gap-2 mt-2 text-sm font-semibold text-secondary">
+            <span>
+              {data?.location?.address}, {data?.location?.city},{" "}
+              {data?.location?.country}
+            </span>
           </span>
 
-          <div className="mt-5 space-y-2 text-sm text-secondary">
-            <p className="font-bold text-black">Superior Double Room</p>
-            <p>Your Child stays for free</p>
-            <p>Your Child stays for free</p>
-            <p>Your Child stays for free</p>
+          <div className="mt-3 space-y-1 text-sm text-secondary">
+            <span className="block font-bold ">Superior Double Room</span>
+            <span className="block font-bold ">
+              Room: {data?.description?.rooms}
+            </span>
+            <span className="block font-bold ">Bed: 1 King Bed</span>
+            <span className="block font-bold ">Your Child stays for free</span>
+            <span className="block text-lg font-bold text-secondary">
+              Free Concellation before the booked date
+            </span>
           </div>
         </div>
 
@@ -43,7 +51,9 @@ const SearchResultBox = () => {
           <div className="flex items-center gap-2">
             <div>
               <span className="block text-sm font-bold">Very good</span>
-              <span className="text-xs text-gray-500">20 reviews</span>
+              <span className="text-xs text-gray-500">
+                {data?.numReviews} reviews
+              </span>
             </div>
             <div className="grid w-8 h-8 text-white rounded-md bg-secondary place-content-center">
               6.7
@@ -51,16 +61,19 @@ const SearchResultBox = () => {
           </div>
           <div>
             <span className="block text-xs text-gray-600">
-              1 night, 2 adults, 1 child
+              {data?.description.duration} night, {data?.description.adults}{" "}
+              adults, 1 child
             </span>
-            <h2 className="text-2xl font-bold">NGN 57, 200</h2>
+            <h2 className="text-2xl font-bold">{formatPrice(data?.price)}</h2>
             <span className="block text-xs text-gray-600">
               Includes taxes and fees
             </span>
-            <button className="mt-2 flex items-center justify-center gap-2 font-semibold primary-btn w-[150px]">
-              Reserve
-              <RightArrow />
-            </button>
+            <Link href={"/checkout/" + data?._id}>
+              <button className="mt-2 flex items-center justify-center gap-2 font-semibold primary-btn w-[150px]">
+                Reserve
+                <RightArrow />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

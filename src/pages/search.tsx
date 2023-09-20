@@ -1,9 +1,35 @@
 import Layout from "@/components/layout";
 import SearchBox from "@/components/searchBox";
 import SearchResultBox from "@/components/searchResultBox";
+import { useMyStore } from "@/store/store";
+import { ApartmentType } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Search = () => {
+  const router = useRouter();
+  const { appartments } = useMyStore();
+
+  const [searchedApartments, setsearchedApartments] = useState<ApartmentType[]>(
+    []
+  );
+
+  useEffect(() => {
+    const { location, checkInDate, checkOutDate, category } = router.query;
+    const stringLocation = location as string;
+
+    if (!location) return;
+
+    setsearchedApartments(
+      appartments.filter(
+        (app) =>
+          app.location.city.toLowerCase() === stringLocation.toLowerCase()
+      )
+    );
+  }, [router.query, appartments]);
+
   return (
     <Layout>
       <main className="max-w-full mx-auto mt-10 w-fullscreen padding">
@@ -23,9 +49,11 @@ const Search = () => {
                 fill
                 className="object-cover"
               />
-              <button className="relative font-semibold primary-btn">
-                Show on map
-              </button>
+              <Link href="/map">
+                <button className="relative font-semibold primary-btn">
+                  Show on map
+                </button>
+              </Link>
             </div>
 
             <div className="relative mt-5 border borderColor rounded-2xl overflow-clip">
@@ -59,14 +87,15 @@ const Search = () => {
           </div>
           <div className="flex-1 ">
             <span className="block mb-4 text-2xl">
-              Lagos: 201 properties found
+              <span className="capitalize">{router.query?.location}</span>:{" "}
+              {searchedApartments.length} properties found
             </span>
 
             <div className="space-y-4">
               {[
-                Array(5)
-                  .fill(null)
-                  .map((item, index) => <SearchResultBox key={index} />),
+                searchedApartments.map((data, index) => (
+                  <SearchResultBox data={data} key={index} />
+                )),
               ]}
             </div>
           </div>

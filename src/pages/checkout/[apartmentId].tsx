@@ -1,3 +1,4 @@
+import ExploreMore from "@/components/exploreMore";
 import { UserIcon } from "@/components/icons";
 import Layout from "@/components/layout";
 import ProtectedRoute from "@/components/protectedRoute";
@@ -388,13 +389,18 @@ export default function CheckoutLayout() {
                     </span>
                   </div>
                 </div>
-                <div className="h-[54px] w-[30%] border flex items-center justify-center border-[#543787] rounded-[2px]">
-                  <p className="text-[20px] text-[#543787]">Message host</p>
-                </div>
+                <Link
+                  href={"/message/" + _id}
+                  className="w-[300px] !py-3 rounded-lg border-2 text-center border-secondary font-bold"
+                >
+                  Message host
+                </Link>
               </div>
             </div>
           </div>
         </main>
+
+        <ExploreMore />
       </ProtectedRoute>
     </Layout>
   );

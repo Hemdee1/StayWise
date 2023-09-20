@@ -6,7 +6,7 @@ import LoginOrUser from "./loginOrUser";
 const Header = () => {
   return (
     <header className="max-w-full mx-auto bg-white w-fullscreen padding font-Manrope">
-      <div className="relative flex items-center justify-between pt-10 pb-5">
+      <div className="relative flex items-center justify-between pt-5 pb-5">
         <Link href="/">
           <Logo />
         </Link>
