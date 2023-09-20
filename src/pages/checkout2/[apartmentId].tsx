@@ -53,7 +53,7 @@ export default function CheckoutLayout({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    router.push("/bookingSuccessful");
+    router.push("/booking-successful");
   };
 
   return (

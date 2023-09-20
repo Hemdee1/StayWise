@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "@/components/layout";
+import Link from "next/link";
 
 export default function BookingSuccesful() {
   return (
@@ -11,9 +12,12 @@ export default function BookingSuccesful() {
             <Celebrate />
           </div>
         </div>
-        <div className="w-[264px] h-[68px] border flex items-center justify-center border-white">
+        <Link
+          href="/"
+          className="w-[264px] h-[68px] border flex items-center justify-center border-borderColor bg-white rounded-lg"
+        >
           <p className="text-[25px] font-normal">Go back home</p>
-        </div>
+        </Link>
       </div>
     </Layout>
   );
