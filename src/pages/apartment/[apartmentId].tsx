@@ -27,6 +27,8 @@ const Page = () => {
     setAppartmentData(appartment[0]);
   }, [apartmentId, appartments]);
 
+  const [filled, setFilled] = useState(false);
+
   if (!appartmentData)
     return (
       <Layout>
@@ -86,8 +88,8 @@ const Page = () => {
             </div>
           </div>
           <div className="flex items-center gap-7">
-            <button>
-              <LoveIcon />
+            <button onClick={() => setFilled((prev) => !prev)}>
+              <LoveIcon fill={filled} />
             </button>
             <Link href={"/checkout/" + _id}>
               <button className="!px-10 !py-3 primary-btn">Reserve</button>

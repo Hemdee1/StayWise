@@ -236,7 +236,7 @@ const StarIcon = () => (
   </svg>
 );
 
-const LoveIcon = ({ fill = false }: { fill?: boolean }) => {
+const LoveIcon = ({ fill = true }: { fill?: boolean }) => {
   return fill ? (
     <svg
       width="32"

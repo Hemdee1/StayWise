@@ -4,13 +4,13 @@ import React from "react";
 export default function Message() {
   return (
     <Layout>
-      <div className=" w-full min-h-screen flex">
-        <div className=" w-[45%] min-h-screen border-r border-gray-200 border-t">
+      <div className="flex w-full min-h-screen ">
+        <div className=" w-[40%] min-h-screen border-r border-gray-200 border-t">
           <p className="text-[24px] font-medium ml-[105px] mt-[26px]">
             Message
           </p>
           <span className="block w-[full] h-[0.5px] bg-gray-200 mt-[26px]  "></span>
-          <div className="w-[80%] h-[142px] flex items-center bg-gray-100 rounded-[16px] mt-[33px] ml-[105px]">
+          <div className="w-[74%] h-[142px] flex items-center bg-gray-100 rounded-[16px] mt-[33px] ml-[105px]">
             <div className="flex gap-[25px] ml-[24px]">
               <div>
                 <img src="/images/message.png" alt="" />
@@ -72,6 +72,21 @@ export default function Message() {
               </div>
             </div>
           </div>
+          <div>
+            <form
+              action=""
+              className="flex w-full ml-[24px] rounded-[24px] border border-gray-200 mt-[522px]"
+            >
+              <input
+                placeholder="write a message here"
+                className=" w-full p-4 outline-none rounded-[24px]  "
+                type="text"
+              ></input>
+              <button>
+                <SendMessage />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </Layout>
@@ -128,6 +143,40 @@ const Host = () => (
           height="32"
           fill="white"
           transform="translate(22.0001 20)"
+        />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+const SendMessage = () => (
+  <svg
+    width="68"
+    height="64"
+    viewBox="0 0 68 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="34"
+      cy="31.9411"
+      r="24"
+      transform="rotate(45 34 31.9411)"
+      fill="#FEB737"
+    />
+    <g clip-path="url(#clip0_96_112)">
+      <path
+        d="M46.6477 32.4792C46.753 32.4341 46.8428 32.359 46.9059 32.2634C46.9689 32.1677 47.0026 32.0557 47.0026 31.9411C47.0026 31.8265 46.9689 31.7144 46.9059 31.6188C46.8428 31.5231 46.753 31.4481 46.6477 31.403L29.788 24.1777L29.7872 24.1769L29.264 23.9517C29.1649 23.9091 29.0559 23.8947 28.9491 23.9102C28.8423 23.9256 28.7419 23.9703 28.6589 24.0392C28.5759 24.1082 28.5135 24.1987 28.4788 24.3009C28.444 24.403 28.4381 24.5128 28.4619 24.6181L28.586 25.1727L28.5852 25.1752L30.0894 31.9411L28.5852 38.707L28.5852 38.7103L28.461 39.2649C28.4377 39.3701 28.4438 39.4796 28.4788 39.5815C28.5137 39.6834 28.5761 39.7737 28.659 39.8424C28.7419 39.9111 28.8422 39.9556 28.9488 39.971C29.0554 39.9864 29.1642 39.9721 29.2632 39.9297L46.6477 32.4792ZM43.5657 32.5264L31.1581 32.5264L31.2599 32.0686C31.2787 31.9846 31.2787 31.8976 31.2599 31.8136L31.1581 31.3558L43.5657 31.3558L44.9307 31.9411L43.5665 32.5272L43.5657 32.5264Z"
+        fill="white"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_96_112">
+        <rect
+          width="18.7317"
+          height="18.7317"
+          fill="white"
+          transform="translate(34 18.6963) rotate(45)"
         />
       </clipPath>
     </defs>

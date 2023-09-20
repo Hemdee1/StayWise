@@ -1,10 +1,23 @@
 import Layout from "@/components/layout";
-import React from "react";
+import { useMyStore } from "@/store/store";
+import React, { useState } from "react";
 
 export default function Referals() {
+  const [copyText, setCopyText] = useState("Copy link");
+  const { user } = useMyStore();
+
+  const text = user
+    ? `staywise/r/${user.firstName}-${user.lastName}`
+    : "staywise/r/no-user.com";
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(text);
+    setCopyText("Copied!");
+  };
+
   return (
     <Layout>
-      <div className="w-full min-h-screen border-t flex justify-center border-gray-200">
+      <div className="flex justify-center w-full min-h-screen border-t border-gray-200">
         <div className="w-[65%]">
           <p className="text-[32px] mt-[36px] font-semibold">Referrals</p>
           <div className="w-[92%]  px-[27px] flex items-center  flex-col min-h-[791px] border border-[#E5E5E5] mt-[36px] rounded-[24px]">
@@ -20,13 +33,14 @@ export default function Referals() {
             </span>
 
             <div className="w-[50%]  h-[56px] mt-[35px] flex items-center rounded-[6px] justify-center border border-[#FEB737] ">
-              <p className="text-[14px] font-normal">
-                staywise/r/abdur-rasheedidris.com
-              </p>
+              <p className="text-[14px] font-normal">{text}</p>
             </div>
-            <div className="w-[50%] mt-[32px]  h-[56px] flex items-center rounded-[6px] justify-center bg-[#FEB737] ">
-              <p className="text-[14px] font-normal">Copy link</p>
-            </div>
+            <button
+              className="w-[50%] mt-[32px]  h-[56px] flex items-center rounded-[6px] justify-center bg-[#FEB737]"
+              onClick={copyLink}
+            >
+              {copyText}
+            </button>
           </div>
         </div>
       </div>
